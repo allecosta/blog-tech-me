@@ -30,13 +30,13 @@
 		})
 		window.load_tbl = function(){
 			$('#post-tbl').dataTable().fnDestroy();
-			$('#post-tbl tbody').html('<tr><td colspan="4" class="text-center">Please Wait...</td></tr>')
+			$('#post-tbl tbody').html('<tr><td colspan="4" class="text-center">Por favor, aguarde...</td></tr>')
 			$.ajax({
 				url:'ajax.php?action=load_post',
 				success:function(resp){
-					if(typeof resp != undefined){
+					if (typeof resp != undefined) {
 						resp = JSON.parse(resp)
-						if(Object.keys(resp).length > 0){
+						if (Object.keys(resp).length > 0) {
 							$('#post-tbl tbody').html('')
 							var i = 1;
 							Object.keys(resp).map(k=>{
@@ -45,7 +45,7 @@
 								tr.append('<td>'+resp[k].title+'</td>')
 								tr.append('<td>'+resp[k].category+'</td>')
 								tr.append('<td>'+(resp[k].status == 0 ? 'For Review' : "Published")+'</td>')
-								tr.append('<td><center><button class="btn btn-info btn-sm edit_post" data-id = "'+resp[k].id+'"><i class="fa fa-edit"></i> Edit</button><button class="btn btn-info btn-sm preview_post" data-id = "'+resp[k].id+'"><i class="fa fa-eye"></i> Preview</button><br><button class="btn btn-primary btn-sm publish_post" data-id = "'+resp[k].id+'"></i> Publish</button><button class="btn btn-danger btn-sm remove_post" data-id = "'+resp[k].id+'"><i class="fa fa-trash"></i> Delete</button></center></td>')
+								tr.append('<td><center><button class="btn btn-info btn-sm edit_post" data-id = "'+resp[k].id+'"><i class="fa fa-edit"></i> Editar</button><button class="btn btn-info btn-sm preview_post" data-id = "'+resp[k].id+'"><i class="fa fa-eye"></i> Visualizar</button><br><button class="btn btn-primary btn-sm publish_post" data-id = "'+resp[k].id+'"></i> Publicar</button><button class="btn btn-danger btn-sm remove_post" data-id = "'+resp[k].id+'"><i class="fa fa-trash"></i> Excluir</button></center></td>')
 								$('#post-tbl tbody').append(tr)
 							})
 						}else{
