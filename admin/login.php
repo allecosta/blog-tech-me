@@ -20,32 +20,31 @@ if(isset($_SESSION['login_id'])) {
 
 </head>
 <style>
-	body{
+	body {
 		width: 100%;
 	    height: calc(100%);
-	    background: #007bff;
+	    background: #2C4964;
 	}
-	main#main{
+	main#main {
 		width:100%;
 		height: calc(100%);
-		background:white;
+		background: #2C4964;
 	}
-	#login-right{
-		position: absolute;
-		right:0;
-		width:40%;
+	main #login {
+		position: inherit;
+		margin: 0 auto;
+		width: 50%;
 		height: calc(100%);
-		background:white;
 		display: flex;
 		align-items: center;
 	}
-	#login-right .card{
+	main #login .card {
 		margin: auto
 	}
 </style>
 <body>
   <main id="main" class=" alert-info">
-  		<div id="login-right">
+  		<div id="login">
   			<div class="card col-md-8">
   				<div class="card-body">
   					<form id="login-form" >
@@ -69,7 +68,7 @@ if(isset($_SESSION['login_id'])) {
 <script>
 	$('#login-form').submit(function(e) {
 		e.preventDefault()
-		$('#login-form button[type="button"]').attr('disabled',true).html('Logging in...');
+		$('#login-form button[type="button"]').attr('disabled',true).html('Fazendo login...');
 		if($(this).find('.alert-danger').length > 0 )
 			$(this).find('.alert-danger').remove();
 		$.ajax({
@@ -85,7 +84,7 @@ if(isset($_SESSION['login_id'])) {
 				if (resp == 1) {
 					location.reload('index.php?page=home');
 				}else {
-					$('#login-form').prepend('<div class="alert alert-danger">Username or password is incorrect.</div>')
+					$('#login-form').prepend('<div class="alert alert-danger">OPS! Usuário ou senha incorreta!</div>')
 					$('#login-form button[type="button"]').removeAttr('disabled').html('Login');
 				}
 			}
