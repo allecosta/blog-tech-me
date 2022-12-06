@@ -22,6 +22,7 @@ Class Action {
 	function login()
 	{
 		extract($_POST);
+
 		$qry = $this->db->query("
 			SELECT 
 				* 
@@ -31,7 +32,7 @@ Class Action {
 
 		if ($qry->num_rows > 0) {
 			foreach ($qry->fetch_array() as $key => $value) {
-				if($key != 'passwors' && !is_numeric($key))
+				if ($key != 'passwors' && !is_numeric($key))
 					$_SESSION['login_'.$key] = $value;
 			}
 			// var_dump($_SESSION);
@@ -48,26 +49,29 @@ Class Action {
 			unset($_SESSION[$key]);
 		}
 
-		header("location:login.php");
+		header("location: login.php");
 	}
 
 	function saveSettings()
 	{
 		extract($_POST);
+
 		$data = " blog_name = '".$name."' ";
 		$data .= ", email = '".$email."' ";
 		$data .= ", about = '".htmlentities(str_replace("'","&#x2019;",$about))."' ";
 		$data .= ", contact = '".$contact."' ";
-		$chk = $this->db->query("SELECT * FROM site_settings ");
+		$chk = $this->db->query("SELECT * FROM site_settings");
 
 		if ($chk->num_rows > 0) {
 			$id = $chk->fetch_array()['id'];
 			$save = $this->db->query("UPDATE site_settings SET ".$data." where id = ".$id);
 
-			if($save)
+			if ($save)
 				return 1;
-		}else {
+
+		} else {
 			echo "INSERT INTO site_settings SET ".$data;
+
 			$save = $this->db->query("INSERT INTO site_settings SET ".$data);
 
 			if ($save)
@@ -79,22 +83,24 @@ Class Action {
 	{
 		extract($_POST);
 
-		if(empty($id)) {
+		if (empty($id)) {
 			$chk = $this->db->query("SELECT * FROM category WHERE name ='".$name."' ")->num_rows;
 
 			if ($chk > 0) {
-				return json_encode(['status'=>2,'msg'=>'Category already exist']);
-			}else {
+				return json_encode(['status'=>2,'msg'=>'OPS! Essa categoria já existe']);
+			} else {
 				$save = $this->db->query("INSERT INTO category SET name='".$name."' , description ='".$description."' ");
+
 				if ($save)
 					return json_encode(['status'=>1]);
 			}
-		}else {
+
+		} else {
 			$chk = $this->db->query("SELECT * FROM category WHERE name ='".$name."' and id !='".$id."' ")->num_rows;
 
 			if ($chk > 0) {
-				return json_encode(['status'=>2,'msg'=>'Category already exist']);
-			}else {
+				return json_encode(['status'=>2,'msg'=>'OPS! Essa categoria já existe']);
+			} else {
 				$save = $this->db->query("UPDATE category SET name='".$name."' , description ='".$description."' WHERE id=".$id);
 
 				if ($save)
@@ -109,7 +115,7 @@ Class Action {
 
 		$data = [];
 
-		while($row=$qry->fetch_assoc()) {
+		while ($row=$qry->fetch_assoc()) {
 			$data[] = $row;
 		}
 
@@ -128,7 +134,7 @@ Class Action {
 
 			$data = [];
 
-			while($row=$qry->fetch_assoc()) {
+			while ($row=$qry->fetch_assoc()) {
 				$data[] = $row;
 			}
 
@@ -138,7 +144,8 @@ Class Action {
 	function removeCategory()
 	{
 		extract($_POST);
-		$remove = $this->db->query("UPDATE category SET status = 0 WHERE id =".$id);
+
+		$remove = $this->db->query("DELETE FROM category WHERE id =".$id);
 
 		if ($remove)
 			return 1;
@@ -147,6 +154,7 @@ Class Action {
 	function publishPost()
 	{
 		extract($_POST);
+
 		$publish = $this->db->query("UPDATE posts SET status = 1 WHERE id =".$id);
 
 		if ($publish)
@@ -156,6 +164,7 @@ Class Action {
 	function removePost()
 	{
 		extract($_POST);
+
 		$remove = $this->db->query("DELETE FROM post WHERE id =".$id);
 
 		if ($remove)
@@ -165,6 +174,7 @@ Class Action {
 	function savePost()
 	{
 		extract($_POST);
+
 		$data = " title = '".$name."' ";
 		$data .= ", post = '".htmlentities(str_replace("'","&#x2019;",$post))."' ";
 		$data .= ", category_id = '".$category_id."' ";
@@ -179,11 +189,11 @@ Class Action {
 		if (empty($id)) {
 			$insert  = $this->db->query("INSERT INTO posts SET".$data);
 
-			if($insert){
-				return json_encode(array('status'=>1,'id'=>$this->db->insert_id));
+			if ($insert) {
+				return json_encode(['status'=>1,'id'=>$this->db->insert_id]);
 			}
 
-		}else {
+		} else {
 			$update  = $this->db->query("
 				UPDATE 
 					posts 
@@ -193,7 +203,7 @@ Class Action {
 					id=".$id);
 
 			if ($update) {
-				return json_encode(array('status'=>1,'id'=>$id));
+				return json_encode(['status'=>1,'id'=>$id]);
 			}
 		}
 		
