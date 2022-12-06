@@ -27,12 +27,12 @@
 	</div>
 	<script>
 		$('#new_category').click(function() {
-			uni_modal('New Category','manage_category.php');
+			uni_modal('Nova Categoria','manage_category.php');
 		})
 
 		window.load_tbl = function() {
 			$('#category-tbl').dataTable().fnDestroy();
-			$('#category-tbl tbody').html('<tr><td colspan="4" class="text-center">Please Wait...</td></tr>')
+			$('#category-tbl tbody').html('<tr><td colspan="4" class="text-center"Por favor, aguarde...</td></tr>')
 
 			$.ajax({
 				url:'ajax.php?action=load_category',
@@ -47,11 +47,11 @@
 								tr.append('<td>'+(i++)+'</td>')
 								tr.append('<td>'+resp[k].name+'</td>')
 								tr.append('<td>'+resp[k].description+'</td>')
-								tr.append('<td><center><button class="btn btn-info btn-sm edit_category" data-id = "'+resp[k].id+'"><i class="fa fa-edit"></i> Edit</button><button class="btn btn-danger btn-sm remove_category" data-id = "'+resp[k].id+'"><i class="fa fa-trash"></i> Delete</button></center></td>')
+								tr.append('<td><center><button class="btn btn-info btn-sm edit_category" data-id = "'+resp[k].id+'"><i class="fa fa-edit"></i> Editar</button><button class="btn btn-danger btn-sm remove_category" data-id = "'+resp[k].id+'"><i class="fa fa-trash"></i> Excluir</button></center></td>')
 								$('#category-tbl tbody').append(tr)
 							})
 						}else {
-						$('#category-tbl tbody').html('<tr><td colspan="4" class="text-center">No Data...</td></tr>')
+						$('#category-tbl tbody').html('<tr><td colspan="4" class="text-center">Sem dados...</td></tr>')
 						}
 					}
 				},
@@ -64,11 +64,11 @@
 		}
 		function manage_category() {
 			$('.edit_category').click(function() {
-				uni_modal("Edit Category",'manage_category.php?id='+$(this).attr('data-id'))
+				uni_modal("Editar Categoria",'manage_category.php?id='+$(this).attr('data-id'))
 			})
 			$('.remove_category').click(function() {
 				// console.log('REMOVE')
-				_conf("Are you sure to delete this data?",'remove_category',[$(this).attr('data-id')])
+				_conf("Tem certeza que deseja excluir esses dados?",'remove_category',[$(this).attr('data-id')])
 			})
 		}
 
@@ -80,7 +80,7 @@
 				data:{id:$id},
 				success:function(resp){
 					if(resp == 1){
-						alert_toast("Data successfully deleted.",'success');
+						alert_toast("Dados excluido com sucesso",'success');
 						$('.modal').modal('hide')
 						load_tbl()
 						end_load();
