@@ -1,13 +1,13 @@
 <section id="hero" class="d-flex align-items-center">
-<div class="container">
-	<h1>Bem vindo! <?= isset($meta['blog_name']) ? $meta['blog_name'] : '' ?></h1>  
-</div>
+	<div class="container">
+		<h1>Bem vindo! <?= isset($meta['blog_name']) ? $meta['blog_name'] : '' ?></h1>  
+	</div>
 </section>
 <section class="d-flex align-items-center">
 	<div class="container">
 	    <?php
 
-		$qry = $qry = $conn->query("
+		$qry = $conn->query("
 			SELECT 
 				p.*,c.name AS category 
 			FROM 
@@ -20,12 +20,14 @@
 				date(p.date_published) 
 			DESC LIMIT 5");
 
-	    while($row=$qry->fetch_assoc()) : ?>
+	    while ($row=$qry->fetch_assoc()) : ?>
 			<div class="card col-md-12 list-items"  data-id="<?= $row['id'] ?>">
 				<div class="card-body">
 					<div class="row">
 						<div class="col-md-4">
-							<center><img src="assets/img/<?= $row['img_path'] ?>" alt="" class='col-sm-10'></center>
+							<center>
+								<img src="assets/img/<?= $row['img_path'] ?>" alt="" class='col-sm-10'>
+							</center>
 						</div>
 						<div class="col-md-8 truncate">
 							<h3><b><?= $row['title'] ?></b></h3>
@@ -40,20 +42,20 @@
 	</div>
 </section>
 <style type="text/css">
-.list-items p{
+.list-items p {
 	text-align: left !important;
 }
-.list-items{
+.list-items {
 	cursor: pointer;
 }
-.truncate{
+.truncate {
 	max-height: 10vw;
 	overflow: hidden;
 }
-</style>]
+</style>
 <script>
-$(document).ready(function(){
-	$('.list-items').click(function(){
+$(document).ready(function() {
+	$('.list-items').click(function() {
 		location.replace('index.php?page=preview_post&id='+$(this).attr('data-id'))
 	})
 })

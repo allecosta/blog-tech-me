@@ -60,31 +60,25 @@ if ($qry->num_rows > 0) {
 			</form>
 		</div>
 	</div>
-
-<script>
-	$('.text-jqte').jqte();
-
-	$('#manage-settings').submit(function(e) {
-		e.preventDefault()
-		start_load()
-		$.ajax({
-			url:'ajax.php?action=save_settings',
-			method:'POST',
-			data:$(this).serialize(),
-			error:err=>{
-				console.log(err)
-			},
-			success:function(resp) {
-				if (resp == 1) {
-					alert_toast('Dados salvo com sucesso.','success')
-					end_load()
+	<script>
+		$('.text-jqte').jqte();
+		$('#manage-settings').submit(function(e) {
+			e.preventDefault()
+			start_load()
+			$.ajax({
+				url:'ajax.php?action=save_settings',
+				method:'POST',
+				data:$(this).serialize(),
+				error:err=>{
+					console.log(err)
+				},
+				success:function(resp) {
+					if (resp == 1) {
+						alert_toast('Dados salvo com sucesso.','success')
+						end_load()
+					}
 				}
-			}
+			})
 		})
-
-	})
-</script>
-<style>
-	
-</style>
+	</script>
 </div>
