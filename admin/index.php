@@ -6,22 +6,21 @@
 
   <title>Admin - Blog Tech Me</title>
  	
-<?php
+  <?php
 
-session_start();
+  session_start();
 
-include('./header.php'); 
-include('./auth.php');
+  include './header.php'; 
+  include './auth.php';
 
-?>
+  ?>
 
 </head>
 <body>
 	<?php include 'topbar.php' ?>
 	<?php include 'navbar.php' ?>
   <div class="toast" id="alert_toast" role="alert" aria-live="assertive" aria-atomic="true">
-    <div class="toast-body text-white">
-    </div>
+    <div class="toast-body text-white"></div>
   </div>
   <main id="view-panel" >
       <?php $page = isset($_GET['page']) ? $_GET['page'] :'home'; ?>
@@ -29,20 +28,19 @@ include('./auth.php');
   </main>
   <div id="preloader"></div>
   <a href="#" class="back-to-top"><i class="icofont-simple-up"></i></a>
-
-<div class="modal fade" id="confirm_modal" role='dialog'>
+  <div class="modal fade" id="confirm_modal" role='dialog'>
     <div class="modal-dialog modal-md" role="document">
       <div class="modal-content">
         <div class="modal-header">
-        <h5 class="modal-title">Confirmação</h5>
-      </div>
-      <div class="modal-body">
-        <div id="delete_content"></div>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-primary" id='confirm' onclick="">Continuar</button>
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
-      </div>
+          <h5 class="modal-title">Confirmação</h5>
+        </div>
+        <div class="modal-body">
+          <div id="delete_content"></div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" id='confirm' onclick="">Continuar</button>
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+        </div>
       </div>
     </div>
   </div>
@@ -50,20 +48,19 @@ include('./auth.php');
     <div class="modal-dialog modal-md" role="document">
       <div class="modal-content">
         <div class="modal-header">
-        <h5 class="modal-title"></h5>
-      </div>
-      <div class="modal-body">
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-primary" id='submit' onclick="$('#uni_modal form').submit()">Salvar</button>
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-      </div>
+          <h5 class="modal-title"></h5>
+        </div>
+        <div class="modal-body"></div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" id='submit' onclick="$('#uni_modal form').submit()">Salvar</button>
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+        </div>
       </div>
     </div>
   </div>
 </body>
 <script>
-	window.start_load = function(){
+	window.start_load = function() {
     $('body').prepend('<di id="preloader2"></di>')
   }
   window.end_load = function(){
@@ -71,7 +68,7 @@ include('./auth.php');
         $(this).remove();
       })
   }
-  window.uni_modal = function($title = '' , $url=''){
+  window.uni_modal = function($title = '' , $url='') {
     start_load()
     $.ajax({
         url:$url,
@@ -79,8 +76,8 @@ include('./auth.php');
             console.log()
             alert("An error occured")
         },
-        success:function(resp){
-            if (resp){
+        success:function(resp) {
+            if (resp) {
                 $('#uni_modal .modal-title').html($title)
                 $('#uni_modal .modal-body').html(resp)
                 $('#uni_modal').modal('show')
@@ -89,7 +86,7 @@ include('./auth.php');
         }
     })
 }
-window._conf = function($msg='',$func='',$params = []){
+window._conf = function($msg='',$func='',$params = []) {
      $('#confirm_modal #confirm').attr('onclick',$func+"("+$params.join(',')+")")
      $('#confirm_modal .modal-body').html($msg)
      $('#confirm_modal').modal('show')

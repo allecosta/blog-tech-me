@@ -6,17 +6,17 @@
 
   <title>Admin - Blog Tech Me</title>
  	
-<?php 
+	<?php 
 
-include('./header.php');
- 
-session_start();
+	include './header.php';
 
-if(isset($_SESSION['login_id'])) {
-	header("location:index.php?page=home");
-}
+	session_start();
 
-?>
+	if (isset($_SESSION['login_id'])) {
+		header("location: index.php?page=home");
+	}
+
+	?>
 
 </head>
 <style>
@@ -44,23 +44,25 @@ if(isset($_SESSION['login_id'])) {
 </style>
 <body>
   <main id="main" class=" alert-info">
-  		<div id="login">
-  			<div class="card col-md-8">
-  				<div class="card-body">
-  					<form id="login-form" >
-  						<div class="form-group">
-  							<label for="username" class="control-label">Usuário</label>
-  							<input type="text" id="username" name="username" class="form-control">
-  						</div>
-  						<div class="form-group">
-  							<label for="password" class="control-label">Senha</label>
-  							<input type="password" id="password" name="password" class="form-control">
-  						</div>
-  						<center><button class="btn-sm btn-block btn-wave col-md-4 btn-primary">Entrar</button></center>
-  					</form>
-  				</div>
-  			</div>
-  		</div>
+	<div id="login">
+		<div class="card col-md-8">
+			<div class="card-body">
+				<form id="login-form" >
+					<div class="form-group">
+						<label class="control-label">Usuário
+							<input type="text" name="username" class="form-control">
+						</label>
+					</div>
+					<div class="form-group">
+						<label class="control-label">Senha
+							<input type="password" name="password" class="form-control">
+						</label>
+					</div>
+					<center><button class="btn-sm btn-block btn-wave col-md-4 btn-primary">Entrar</button></center>
+				</form>
+			</div>
+		</div>
+	</div>
   </main>
   <div id="preloader"></div>
   <a href="#" class="back-to-top"><i class="icofont-simple-up"></i></a>
@@ -69,7 +71,7 @@ if(isset($_SESSION['login_id'])) {
 	$('#login-form').submit(function(e) {
 		e.preventDefault()
 		$('#login-form button[type="button"]').attr('disabled',true).html('Fazendo login...');
-		if($(this).find('.alert-danger').length > 0 )
+		if ($(this).find('.alert-danger').length > 0 )
 			$(this).find('.alert-danger').remove();
 		$.ajax({
 			url:'ajax.php?action=login',
@@ -80,11 +82,11 @@ if(isset($_SESSION['login_id'])) {
 		$('#login-form button[type="button"]').removeAttr('disabled').html('Login');
 
 			},
-			success:function(resp){
+			success:function(resp) {
 				if (resp == 1) {
 					location.reload('index.php?page=home');
-				}else {
-					$('#login-form').prepend('<div class="alert alert-danger">OPS! Usuário ou senha incorreta!</div>')
+				} else {
+					$('#login-form').prepend('<div class="alert alert-danger">OPS! Usuário ou senha incorreta</div>')
 					$('#login-form button[type="button"]').removeAttr('disabled').html('Login');
 				}
 			}

@@ -20,20 +20,19 @@
 						
 					</tbody>
 				</table>
-			</div>
-			
+			</div>	
 		</div>
 	</div>
 	<script>
-		$('#new_post').click(function(){
+		$('#new_post').click(function() {
 				location.replace('index.php?page=manage_post')
 		})
-		window.load_tbl = function(){
+		window.load_tbl = function() {
 			$('#post-tbl').dataTable().fnDestroy();
 			$('#post-tbl tbody').html('<tr><td colspan="4" class="text-center">Por favor, aguarde...</td></tr>')
 			$.ajax({
 				url:'ajax.php?action=load_post',
-				success:function(resp){
+				success:function(resp) {
 					if (typeof resp != undefined) {
 						resp = JSON.parse(resp)
 						if (Object.keys(resp).length > 0) {
@@ -44,22 +43,22 @@
 								tr.append('<td class="text-center">'+(i++)+'</td>')
 								tr.append('<td>'+resp[k].title+'</td>')
 								tr.append('<td>'+resp[k].category+'</td>')
-								tr.append('<td>'+(resp[k].status == 0 ? 'For Review' : "Published")+'</td>')
+								tr.append('<td>'+(resp[k].status == 0 ? 'Para revisão' : "Publicado")+'</td>')
 								tr.append('<td><center><button class="btn btn-info btn-sm edit_post" data-id = "'+resp[k].id+'"><i class="fa fa-edit"></i> Editar</button><button class="btn btn-info btn-sm preview_post" data-id = "'+resp[k].id+'"><i class="fa fa-eye"></i> Visualizar</button><br><button class="btn btn-primary btn-sm publish_post" data-id = "'+resp[k].id+'"></i> Publicar</button><button class="btn btn-danger btn-sm remove_post" data-id = "'+resp[k].id+'"><i class="fa fa-trash"></i> Excluir</button></center></td>')
 								$('#post-tbl tbody').append(tr)
 							})
-						}else{
+						} else {
 						$('#post-tbl tbody').html('<tr><td colspan="4" class="text-center">No Data...</td></tr>')
 						}
 					}
 				},
-				complete:function(){
+				complete:function() {
 					$('#post-tbl').dataTable()
 					manage_post();
 				}
 			})
 		}
-		function manage_post(){
+		function manage_post() {
 			$('.edit_post').click(function(){
 				location.replace('index.php?page=manage_post&id='+$(this).attr('data-id'))
 			})
@@ -82,8 +81,8 @@
 				method:'POST',
 				data:{id:$id},
 				success:function(resp) {
-					if (resp == 1){
-						alert_toast("Dados excluido com sucesso.",'success');
+					if (resp == 1) {
+						alert_toast("Dados excluido com sucesso",'success');
 						$('.modal').modal('hide')
 						load_tbl()
 						end_load();
@@ -97,9 +96,9 @@
 				url:'ajax.php?action=publish_post',
 				method:'POST',
 				data:{id:$id},
-				success:function(resp){
+				success:function(resp) {
 					if (resp == 1) {
-						alert_toast("Dados publicado com sucesso.",'success');
+						alert_toast("Dados publicado com sucesso",'success');
 						$('.modal').modal('hide')
 						load_tbl()
 						end_load();
