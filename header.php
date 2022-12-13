@@ -1,5 +1,5 @@
-<meta content="" name="descriptison">
-  <meta content="" name="keywords">
+  <meta content="Blog Tech Me" name="description">
+  <meta content="blog, tech me, web development, desenvolvimento web" name="keywords">
 
   <!-- Favicons -->
   <link href="assets/img/home.jpg" rel="icon">
