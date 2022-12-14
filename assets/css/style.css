@@ -510,7 +510,6 @@ h6 {
   margin: 0;
   font-size: 68px;
   font-weight: 400;
-  /* line-height: 56px; */
   color: #fff;
   font-family: 'Rubik 80s Fade', cursive;
 }
@@ -547,7 +546,7 @@ h6 {
   }
 }
 
-@media (max-width: 992px) {
+@media (max-width: 500px) {
   #hero {
     margin-bottom: 0;
     height: 100vh;
@@ -565,6 +564,26 @@ h6 {
   #hero h2 {
     font-size: 18px;
     line-height: 24px;
+    margin-bottom: 30px;
+  }
+}
+
+@media (max-width: 992px) and (min-width: 768px) {
+  #hero {
+    margin-bottom: 0;
+    height: 100vh;
+  }
+
+  #hero .container {
+    padding-bottom: 63px;
+  }
+
+  #hero h1 {
+    font-size: 48px;
+  }
+
+  #hero h2 {
+    font-size: 28px;
     margin-bottom: 30px;
   }
 }
