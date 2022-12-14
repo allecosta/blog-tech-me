@@ -196,7 +196,7 @@ h6 {
 # Header
 --------------------------------------------------------------*/
 #header {
-  background: #fff;
+  background: #2B2D32;
   transition: all 0.5s;
   z-index: 997;
   padding: 15px 0;
@@ -219,7 +219,7 @@ h6 {
 }
 
 #header .logo a {
-  color: #2c4964;
+  color: #fff;
 }
 
 #header .logo img {
@@ -259,18 +259,17 @@ h6 {
 .nav-menu a {
   display: block;
   position: relative;
-  color: #2c4964;
+  color: #fff;
   transition: 0.3s;
   font-size: 14px;
   font-family: "Open Sans", sans-serif;
   padding: 5px 2px;
-  border-bottom: 2px solid #fff;
 }
 
 .nav-menu a:hover,
 .nav-menu .active>a,
 .nav-menu li:hover>a {
-  color: #1977cc;
+  color: #fff;
   border-color: #1977cc;
 }
 
