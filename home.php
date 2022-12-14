@@ -1,6 +1,7 @@
 <section id="hero" class="d-flex align-items-center">
 	<div class="container">
-		<h1>Bem vindo! <?= isset($meta['blog_name']) ? $meta['blog_name'] : '' ?></h1>  
+		<h1>Bem vindo (a) <br>ao Tech Me</h1> 
+		<h2>By Alexandre Costa</h2>
 	</div>
 </section>
 <section class="d-flex align-items-center">

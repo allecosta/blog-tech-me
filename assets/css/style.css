@@ -8,6 +8,9 @@
 /*--------------------------------------------------------------
 # General
 --------------------------------------------------------------*/
+
+@import url('https://fonts.googleapis.com/css2?family=Arima:wght@100;700&family=Fredoka+One&family=Montserrat:wght@700&family=Rubik+80s+Fade&display=swap');
+
 body {
   font-family: "Open Sans", sans-serif;
   color: #444444;
@@ -505,17 +508,18 @@ h6 {
 
 #hero h1 {
   margin: 0;
-  font-size: 48px;
-  font-weight: 700;
-  line-height: 56px;
-  text-transform: uppercase;
-  color: #2c4964;
+  font-size: 68px;
+  font-weight: 400;
+  /* line-height: 56px; */
+  color: #fff;
+  font-family: 'Rubik 80s Fade', cursive;
 }
 
 #hero h2 {
-  color: #2c4964;
+  color: #fff;
   margin: 10px 0 0 0;
   font-size: 24px;
+  font-family: 'Arima', cursive;
 }
 
 #hero .btn-get-started {
