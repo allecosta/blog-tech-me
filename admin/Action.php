@@ -165,7 +165,7 @@ Class Action {
 	{
 		extract($_POST);
 
-		$remove = $this->db->query("DELETE FROM post WHERE id =".$id);
+		$remove = $this->db->query("DELETE FROM posts WHERE id =".$id);
 
 		if ($remove)
 			return 1;
