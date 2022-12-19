@@ -222,11 +222,21 @@ h6 {
   color: #fff;
 }
 
-#header .logo img {
+#header .logo {
   max-height: 40px;
 }
 
-@media (max-width: 992px) {
+@media (max-width: 500px) {
+  #header {
+    top: 0;
+  }
+
+  #header .logo {
+    font-size: 20px;
+  }
+}
+
+@media (max-width: 992px) and (min-width: 768px) {
   #header {
     top: 0;
   }
