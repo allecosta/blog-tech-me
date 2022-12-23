@@ -38,7 +38,7 @@
                         <?php endwhile; ?>
                     </ul>
                 </li>
-                <li class="nav-about"><a href="index.php?page=about">Sobre Mim</a></li>
+                <li class="nav-about"><a href="index.php?page=about">Quem sou</a></li>
             </ul>
         </nav>
     </div>
