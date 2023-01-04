@@ -9,22 +9,21 @@
 
 ## Sobre o Projeto
 
-Se trata de um blog onde irei abordar assuntos sobre tecnologia, mais precisamente voltado ao PHP e todo o seu ecossistema, documentando e abordando assuntos sobre o que venho estudando e aprendendo.
-Serão abordados também assuntos no âmbito mais filosofico do qual sou um apreciador.
+Se trata de um blog com assuntos sobre tecnologia e o mundo web, com foco em PHP e todo o seu ecossistema, documentando e abordando assuntos sobre estudos e aprendizados, como também assuntos no âmbito mais filosofico do qual sou um apreciador.
 
 ## Features - Home
 
 * Home - Página inicial com a apresentação dos posts e acesso a redes sociais.
-* Categorias - Lista a categorias de acordo com os posts.
+* Categorias - Lista as categorias de acordo com os posts.
 * Quem sou - Uma breve introdução sobre o proprietario do projeto.
 
-## Features - Admin (cpainel)
+## Features - Admin (CPainel)
 
 * Form de autenticação ao sistema de Admin.
-* Cpainel - Página inicial
+* CPainel - Página inicial
 * Categoria - Adiciona, edita e exclui categorias.
 * Posts - Edita, visualiza, publica e exclui posts.
-* Settings - Recebe o nome, email e descrição do administrador do sistema.
+* Configuração - Nome, email, telefone e descrição do administrador do sistema.
 
 
 
