@@ -19,47 +19,26 @@
 	?>
 
 </head>
-<style>
-	body {
-		width: 100%;
-	    height: calc(100%);
-	    background: #2C4964;
-	}
-	main#main {
-		width:100%;
-		height: calc(100%);
-		background: #2C4964;
-	}
-	main #login {
-		position: inherit;
-		margin: 0 auto;
-		width: 50%;
-		height: calc(100%);
-		display: flex;
-		align-items: center;
-	}
-	main #login .card {
-		margin: auto
-	}
-</style>
 <body>
-  <main id="main" class=" alert-info">
-	<div id="login">
-		<div class="card col-md-8">
+  <main class=" alert-info">
+	<div class="d-flex justify-content-center align-items-center" style="height: 100vh; background: #2C4964;">
+		<div class="card align-items-center" style="width: 20rem;">
 			<div class="card-body">
 				<form id="login-form" >
-					<div class="form-group">
-						<label class="control-label">Usuário
+					<div class="mb-3">
+						<label class="form-label">Usuário
 							<input type="text" name="username" class="form-control">
 						</label>
 					</div>
-					<div class="form-group">
-						<label class="control-label">Senha
+					<div class="mb-3">
+						<label class="form-label">Senha
 							<input type="password" name="password" class="form-control">
 						</label>
 					</div>
-					<center><button class="btn-sm btn-block btn-wave col-md-4 btn-primary">Entrar</button></center>
-				</form>
+					<div class="text-center">
+						<button class="btn btn-primary">Entrar</button>
+					</div>
+				</form>		
 			</div>
 		</div>
 	</div>
@@ -80,7 +59,6 @@
 			error:err=>{
 				console.log(err)
 		$('#login-form button[type="button"]').removeAttr('disabled').html('Login');
-
 			},
 			success:function(resp) {
 				if (resp == 1) {
