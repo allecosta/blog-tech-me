@@ -2,7 +2,7 @@
 	<div class="card-body">
 		<?php 
 
-		include '../connect.php';
+		include '../config/connect.php';
 
 		if (isset($_GET['id'])) {
 			$qry = $conn->query("SELECT * FROM posts WHERE id=".$_GET['id']);

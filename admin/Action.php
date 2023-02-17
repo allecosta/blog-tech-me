@@ -9,7 +9,7 @@ Class Action {
 	public function __construct() 
 	{
 
-   		include '../connect.php';
+   		include '../config/connect.php';
     
     	$this->db = $conn;
 	}

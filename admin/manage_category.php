@@ -1,6 +1,6 @@
 <?php 
 
-include '../connect.php';
+include '../config/connect.php';
 
 if (isset($_GET['id'])) {
 	$qry = $conn->query("SELECT * FROM category WHERE id=".$_GET['id']);

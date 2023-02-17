@@ -1,6 +1,6 @@
 <?php 
 
-include 'connect.php';
+include './config/connect.php';
 
 $qry = $conn->query("
 	SELECT 

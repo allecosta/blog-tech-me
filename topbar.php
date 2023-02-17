@@ -1,5 +1,5 @@
 
-<?php include 'connect.php'; ?>
+<?php include './config/connect.php'; ?>
 
 <div id="topbar" class="d-none d-lg-flex align-items-center fixed-top">
     <div class="container d-flex">
