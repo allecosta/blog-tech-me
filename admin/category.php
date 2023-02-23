@@ -72,7 +72,7 @@
 			})
 		}
 
-		function removeCategory($id) {
+		function remove_category($id) {
 			start_load()
 			$.ajax({
 				url:'ajax.php?action=remove_category',
